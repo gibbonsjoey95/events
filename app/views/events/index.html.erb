@@ -1,0 +1,14 @@
+<h1>Events</h1>
+
+<ul>
+    <% @events.each do |event|%>
+        <li>
+            <div>
+                <h2> <%= event.name %> </h2>
+                <p> <%= event.date %> </p>
+                <p> Date: <%= event.date.strftime('%A, %B %d, %Y') %> </p>
+                <p> <%= event.location%> </p>
+            </div>
+        </li>
+    <% end %>
+</ul>

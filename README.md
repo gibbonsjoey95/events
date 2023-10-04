@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+This is a ruby on rails project that I am building that users will be able to post events. https://www.theodinproject.com/lessons/ruby-on-rails-private-events#warmup-thinking-data-first
