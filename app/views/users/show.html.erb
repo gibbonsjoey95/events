@@ -1,0 +1,14 @@
+<h1>User Profile</h1>
+
+<p>Email: <%= @user.email %></p>
+
+<h2>Events</h2>
+<% if @events.any? %>
+  <ul>
+    <% @events.each do |event| %>
+      <li><%= event.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No events found for this user.</p>
+<% end %>
