@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     @event = @user.events.build(events_params)
 
     if @event.save  
-      redirect_to @event
+      redirect_to @event, notice: 'Event was succesfully created'
     else
       render :new
     end
