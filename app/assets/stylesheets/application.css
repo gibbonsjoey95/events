@@ -14,4 +14,92 @@
  *= require_self
  */
 
+
+ body {
+    margin: 0; /* Remove default body margin */
+  }  
+
+ /* Navbar styles */
+.navbar {
+    background: linear-gradient(to right, #4CAF50, #2196F3);
+    padding: 20px 0;
+  }
   
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .navbar-collapse {
+    display: flex;
+  }
+  
+  .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .nav-item {
+    margin-right: 15px;
+  }
+  
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .nav-link-button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .nav-link-button:hover {
+    text-decoration: underline;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+  }
+  
+  .event-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px; /* Adjust spacing between event containers */
+    width: 250px;
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    border-radius: 10px; /* Add border-radius for curved corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  }
+  
+  .event-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .event-container p {
+    margin: 5px 0;
+  }
