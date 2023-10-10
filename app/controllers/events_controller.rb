@@ -37,6 +37,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def unattend
+    @event = Event.find(params[:id])
+
+    # Remove the current user from the attendees
+    @event.attendees.delete(current_user)
+
+    redirect_to @event, notice: "You have successfully removed yourself from the event."
+  end
+
   private
 
   def events_params

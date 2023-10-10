@@ -74,6 +74,22 @@
     text-decoration: underline;
   }
 
+  .content-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .content {
+    flex-grow: 1; /* Takes up remaining space */
+  }
+
+  .right-sidebar, .left-sidebar {
+    width: 200px; /* Adjust the width as needed */
+    background-color: #f0f0f0; /* Example background color */
+    padding: 10px; /* Adjust padding as needed */
+  }
+
   .page {
     max-width: 1200px;
     margin: 0 auto;

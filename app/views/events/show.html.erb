@@ -4,6 +4,7 @@
 
 <p>Date: <%= @event.date.strftime('%A, %B %d, %Y') %> </p>
 <p>Location: <%= @event.location %> </p>
+<p>Description: <%= @event.description %> </p>
 
 <h2>Attendees</h2>
 <ul>
@@ -14,7 +15,10 @@
 
 <% if user_signed_in? %>
   <% if current_user.attended_events.include?(@event) %>
-    <p>You are already attending this event.</p>
+    <p>You are already attending this event</p>
+    <%= form_with(model: current_user.attendances.find_by(attended_event: @event), local: true, method: :delete) do |form| %>
+      <%= form.submit "Unattend Event", class: "btn btn-danger" %>
+    <% end %>
   <% else %>
     <%= form_with(model: current_user.attendances.build, url: attendances_path, method: :post) do |form| %>
       <%= form.hidden_field :attended_event_id, value: @event.id %>
@@ -24,3 +28,5 @@
 <% else %>
   <p>Please sign in to attend the event.</p>
 <% end %>
+
+

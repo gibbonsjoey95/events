@@ -1,0 +1,11 @@
+<div>
+    <% if current_user %>
+        <h1>Hello, <%= current_user.first_name%> </h1>
+        <h4>Your Events</h4>
+        <ul>
+            <% current_user.events.each do |event| %>
+                <li> <%= link_to event.name, event_path(event) %> </li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>

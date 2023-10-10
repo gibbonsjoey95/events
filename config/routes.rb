@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   
   resources :events, only: [:index, :new, :create, :show] do
     post 'attend', on: :member
+    delete 'unattend', on: :member
   end
 
-  resources :users, only: [:show]
-  resources :attendances, only: [:new, :create]
+  resources :users, only: [:show] do
+    get 'attended_events', on: :member
+  end
+  
+  resources :attendances, only: [:new, :create, :destroy]
 
   root to: 'events#index'
 end
