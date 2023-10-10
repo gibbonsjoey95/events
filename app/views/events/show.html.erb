@@ -1,6 +1,26 @@
 <h1> <%= @event.name %></h1>
-<p>Creator: <%= @event.creator.email %></p>
+<p>Creator: <%= "#{@event.creator.first_name} #{@event.creator.last_name}" %></p>
 
 
 <p>Date: <%= @event.date.strftime('%A, %B %d, %Y') %> </p>
 <p>Location: <%= @event.location %> </p>
+
+<h2>Attendees</h2>
+<ul>
+  <% @attendees.each do |attendee| %>
+    <li><%= link_to "#{attendee.first_name} #{attendee.last_name}", user_path(attendee) %></li>
+  <% end %>
+</ul>
+
+<% if user_signed_in? %>
+  <% if current_user.attended_events.include?(@event) %>
+    <p>You are already attending this event.</p>
+  <% else %>
+    <%= form_with(model: current_user.attendances.build, url: attendances_path, method: :post) do |form| %>
+      <%= form.hidden_field :attended_event_id, value: @event.id %>
+      <%= form.submit "Attend Event", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>Please sign in to attend the event.</p>
+<% end %>

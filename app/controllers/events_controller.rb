@@ -21,6 +21,20 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @creator = @event.creator
+    @attendees = @event.attendees
+  end
+
+  def attend
+    @event = Event.find(params[:id])
+
+    # Check if the current user is already attending the event
+    if current_user.attended_events.include?(@event)
+      redirect_to @event, notice: "You are already attending this event."
+    else
+      # Add the current user to the attendees
+      @event.attendees << current_user
+      redirect_to @event, notice: "You are now attending the event."
+    end
   end
 
   private

@@ -1,0 +1,12 @@
+<h1>Attend an Event</h1>
+
+<%= form_with(model: @attendance, url: attendances_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.collection_select(:attended_event_id, @events, :id, :name, prompt: 'Select an event') %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Attend Event' %>
+  </div>
+<% end %>
