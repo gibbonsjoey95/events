@@ -7,7 +7,7 @@
         <h2><%= link_to event.name, event_path(event) %></h2>
 
         <% if user_signed_in? %>
-            <p>Creator: <%= link_to event.creator.email, user_path(event.creator) %></p>
+            <p>Creator: <%= link_to event.creator.first_name, user_path(event.creator) %></p>
         <% end %>  
 
         <p>Date: <%= event.date.strftime('%A, %B %d, %Y') %></p>

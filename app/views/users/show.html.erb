@@ -12,3 +12,10 @@
 <% else %>
   <p>No events found for this user.</p>
 <% end %>
+
+<h2>Events <%= @user.first_name %> is attending</h2>
+    <ul>
+      <% @user.attended_events.each do |event| %>
+        <li><%= link_to event.name, event_path(event) %></li>
+      <% end %>
+    </ul>

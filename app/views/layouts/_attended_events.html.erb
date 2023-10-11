@@ -1,9 +1,11 @@
 <div id="attended-events-container">
-  <h1>Attended Events</h1>
+  <% if current_user%>
+    <h1>Attended Events</h1>
 
-  <ul>
-    <% current_user.attended_events.each do |event| %>
-      <li><%= link_to event.name, event_path(event) %></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% current_user.attended_events.each do |event| %>
+        <li><%= link_to event.name, event_path(event) %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
