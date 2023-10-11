@@ -1,18 +1,39 @@
 <div class="page">
     <h1>Events</h1>
 
+    <h3>Upcoming Events</h3>
     <ul>
     <% @events.each do |event| %>
-        <div class="event-container">
-        <h2><%= link_to event.name, event_path(event) %></h2>
+        <% if event.date >= Date.today %>
+            <li class="event-container">
+                <h2><%= link_to event.name, event_path(event) %></h2>
 
-        <% if user_signed_in? %>
-            <p>Creator: <%= link_to event.creator.first_name, user_path(event.creator) %></p>
-        <% end %>  
+                <% if user_signed_in? %>
+                    <p>Creator: <%= link_to event.creator.first_name, user_path(event.creator) %></p>
+                <% end %>  
 
-        <p>Date: <%= event.date.strftime('%A, %B %d, %Y') %></p>
-        <p><%= event.location %></p>
-        </div>
+                <p>Date: <%= event.date.strftime('%A, %B %d, %Y') %></p>
+                <p><%= event.location %></p>
+            </li>
+        <% end %>
+    <% end %>
+    </ul>
+
+    <h3>Past Events<h3>
+    <ul>
+    <% @events.each do |event| %>
+        <% if event.date < Date.today %>
+            <li class="event-container">
+                <h2><%= link_to event.name, event_path(event) %></h2>
+
+                <% if user_signed_in? %>
+                    <p>Creator: <%= link_to event.creator.first_name, user_path(event.creator) %></p>
+                <% end %>  
+
+                <p>Date: <%= event.date.strftime('%A, %B %d, %Y') %></p>
+                <p><%= event.location %></p>
+            </li>
+        <% end %>
     <% end %>
     </ul>
 </div>
