@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   
-  resources :events, only: [:index, :new, :create, :show] do
+  resources :events, only: [:index, :new, :create, :show, :destroy] do
     post 'attend', on: :member
     delete 'unattend', on: :member
   end

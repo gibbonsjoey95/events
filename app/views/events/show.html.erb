@@ -1,7 +1,6 @@
 <h1> <%= @event.name %></h1>
 <p>Creator: <%= "#{@event.creator.first_name} #{@event.creator.last_name}" %></p>
 
-
 <p>Date: <%= @event.date.strftime('%A, %B %d, %Y') %> </p>
 <p>Location: <%= @event.location %> </p>
 <p>Description: <%= @event.description %> </p>
@@ -28,5 +27,14 @@
 <% else %>
   <p>Please sign in to attend the event.</p>
 <% end %>
+
+<% if @event.creator == current_user %>
+  <%= button_to 'Delete Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+
+
+
+
 
 

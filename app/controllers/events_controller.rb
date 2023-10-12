@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @past_events = Event.past
+    @upcoming_events = Event.upcoming
   end
 
   def new
@@ -44,6 +45,13 @@ class EventsController < ApplicationController
     @event.attendees.delete(current_user)
 
     redirect_to @event, notice: "You have successfully removed yourself from the event."
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+  
+    redirect_to events_path, notice: 'Event was successfully deleted.'
   end
 
   private

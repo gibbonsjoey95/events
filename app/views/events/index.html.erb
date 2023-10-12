@@ -3,8 +3,7 @@
 
     <h3>Upcoming Events</h3>
     <ul>
-    <% @events.each do |event| %>
-        <% if event.date >= Date.today %>
+    <% @upcoming_events.each do |event| %>
             <li class="event-container">
                 <h2><%= link_to event.name, event_path(event) %></h2>
 
@@ -15,14 +14,12 @@
                 <p>Date: <%= event.date.strftime('%A, %B %d, %Y') %></p>
                 <p><%= event.location %></p>
             </li>
-        <% end %>
     <% end %>
     </ul>
 
     <h3>Past Events<h3>
     <ul>
-    <% @events.each do |event| %>
-        <% if event.date < Date.today %>
+    <% @past_events.each do |event| %>
             <li class="event-container">
                 <h2><%= link_to event.name, event_path(event) %></h2>
 
@@ -33,7 +30,6 @@
                 <p>Date: <%= event.date.strftime('%A, %B %d, %Y') %></p>
                 <p><%= event.location %></p>
             </li>
-        <% end %>
     <% end %>
     </ul>
 </div>
