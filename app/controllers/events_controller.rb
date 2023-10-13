@@ -47,6 +47,20 @@ class EventsController < ApplicationController
     redirect_to @event, notice: "You have successfully removed yourself from the event."
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(events_params)
+      redirect_to @event, notice: 'Event was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
