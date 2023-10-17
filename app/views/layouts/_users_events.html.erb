@@ -8,9 +8,10 @@
     <div id="userEvents" style="display: none;">
     <ul>
         <% current_user.events.each do |event| %>
-        <li><%= link_to event.name, event_path(event) %></li>
+        <li class="event-item"><%= link_to event.name, event_path(event) %></li>
         <% end %>
     </ul>
     </div>
+
   <% end %>
 </div>

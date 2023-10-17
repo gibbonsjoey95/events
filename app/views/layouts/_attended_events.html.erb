@@ -1,11 +1,13 @@
-<div id="attended-events-container">
+<div id="attended-events-container" class="users-events-container">
   <% if current_user%>
     <h1>Attended Events</h1>
 
+    <div id="userEvents">
     <ul>
       <% current_user.attended_events.each do |event| %>
-        <li><%= link_to event.name, event_path(event) %></li>
+        <li class="event-item"><%= link_to event.name, event_path(event) %></li>
       <% end %>
     </ul>
+    </div>
   <% end %>
 </div>
