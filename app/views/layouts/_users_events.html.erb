@@ -1,22 +1,11 @@
-<div>
-    <% if current_user %>
-        <h1>Hello, <%= current_user.first_name%> </h1>
-        <h4>Your Events</h4>
-        <ul>
-            <% current_user.events.each do |event| %>
-                <li> <%= link_to event.name, event_path(event) %> </li>
-            <% end %>
-        </ul>
-    <% end %>
-</div>
+<%= javascript_include_tag('left_sidebar.js') %>
 
-<div>
+<div class="users-events-container">
   <% if current_user %>
     <h1>Hello, <%= current_user.first_name %></h1>
-    <button id="toggleEvents">Toggle Events</button>
+    <button id="toggleEvents" class="custom-button">My Events</button>
 
     <div id="userEvents" style="display: none;">
-    <h4>Your Events</h4>
     <ul>
         <% current_user.events.each do |event| %>
         <li><%= link_to event.name, event_path(event) %></li>
