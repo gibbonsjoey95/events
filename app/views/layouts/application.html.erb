@@ -8,9 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+
   </head>
 
   <body>
+
     <%= render 'layouts/navbar'%>
 
     <div class="content-container">
@@ -18,7 +21,7 @@
         <%= render 'layouts/users_events'%>
       </div>
       
-      <div class="content">
+      <div class="content" id="main-content">
         <%= yield %>
       </div>
 
@@ -26,5 +29,8 @@
         <%= render 'layouts/attended_events'%>
       </div>
     </div>
+
+
+  <%= javascript_include_tag('left_sidebar.js') %>
   </body>
 </html>

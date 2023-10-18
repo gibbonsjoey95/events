@@ -160,6 +160,10 @@
     color: #555; 
   }
 
+  #userEvents.hidden {
+    display: none;
+  }
+
   #userEvents ul {
     list-style: none;
     padding: 0;
