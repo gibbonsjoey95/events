@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
-    @past_events = Event.past
-    @upcoming_events = Event.upcoming
+    @past_events = Event.past.order(date: :asc)
+    @upcoming_events = Event.upcoming.order(date: :asc)
   end
 
   def new
@@ -28,11 +28,9 @@ class EventsController < ApplicationController
   def attend
     @event = Event.find(params[:id])
 
-    # Check if the current user is already attending the event
     if current_user.attended_events.include?(@event)
       redirect_to @event, notice: "You are already attending this event."
     else
-      # Add the current user to the attendees
       @event.attendees << current_user
       redirect_to @event, notice: "You are now attending the event."
     end
@@ -41,7 +39,6 @@ class EventsController < ApplicationController
   def unattend
     @event = Event.find(params[:id])
 
-    # Remove the current user from the attendees
     @event.attendees.delete(current_user)
 
     redirect_to @event, notice: "You have successfully removed yourself from the event."
