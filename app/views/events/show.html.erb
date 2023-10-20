@@ -1,37 +1,57 @@
-<h1> <%= @event.name %></h1>
-<p>Creator: <%= "#{@event.creator.first_name} #{@event.creator.last_name}" %></p>
+<div class="event-show-container">
+  <h1> <%= @event.name %></h1>
 
-<p>Date: <%= @event.date.strftime('%A, %B %d, %Y') %> </p>
-<p>Location: <%= @event.location %> </p>
-<p>Description: <%= @event.description %> </p>
+  <div class="event-details-container">
+    <p>Creator: <%= "#{@event.creator.first_name} #{@event.creator.last_name}" %></p>
+    <p>Date: <%= @event.date.strftime('%A, %B %d, %Y') %> </p>
 
-<h2>Attendees</h2>
-<ul>
-  <% @attendees.each do |attendee| %>
-    <li><%= link_to "#{attendee.first_name} #{attendee.last_name}", user_path(attendee) %></li>
-  <% end %>
-</ul>
+    <% if @event.location.present? %>
+      <p>Location: <%= @event.location %> </p>
+    <% end %>
 
-<% if user_signed_in? %>
-  <% if current_user.attended_events.include?(@event) %>
-    <p>You are already attending this event</p>
-    <%= form_with(model: current_user.attendances.find_by(attended_event: @event), local: true, method: :delete) do |form| %>
-      <%= form.submit "Unattend Event", class: "btn btn-danger" %>
+    <% if @event.description.present? %>
+      <p>Description: <%= @event.description %> </p>
+    <% end %>
+  </div>
+
+  <div class="attendees-section">
+    <h2>Attendees</h2>
+    <% if @attendees.present? %>
+      <ul class="attendees-list">
+        <% @attendees.each do |attendee| %>
+          <li>
+            <span class="attendee-icon"></span>
+            <%= link_to "#{attendee.first_name} #{attendee.last_name}", user_path(attendee) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No one is attending this event yet!</p>
+    <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <% if current_user.attended_events.include?(@event) %>
+      <%= form_with(model: current_user.attendances.find_by(attended_event: @event), local: true, method: :delete) do |form| %>
+        <%= form.submit "Unattend Event", class: "btn shared-btn btn-danger" %>
+      <% end %>
+    <% else %>
+      <%= form_with(model: current_user.attendances.build, url: attendances_path, method: :post) do |form| %>
+        <%= form.hidden_field :attended_event_id, value: @event.id %>
+        <%= form.submit "Attend Event", class: "btn shared-btn btn-primary" %>
+      <% end %>
     <% end %>
   <% else %>
-    <%= form_with(model: current_user.attendances.build, url: attendances_path, method: :post) do |form| %>
-      <%= form.hidden_field :attended_event_id, value: @event.id %>
-      <%= form.submit "Attend Event", class: "btn btn-primary" %>
-    <% end %>
+    <p>Please sign in to attend the event.</p>
   <% end %>
-<% else %>
-  <p>Please sign in to attend the event.</p>
-<% end %>
 
-<% if @event.creator == current_user %>
-  <%= button_to 'Delete Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  %>
-  <%= link_to 'Edit Event', edit_event_path(@event), class: 'btn btn-primary' %>
-<% end %>
+  <div class="event-actions">
+    <% if @event.creator == current_user %>
+      <%= button_to 'Delete Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn shared-btn btn-danger"  %>
+      <%= link_to 'Edit Event', edit_event_path(@event), class: 'btn shared-btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
 
 
 

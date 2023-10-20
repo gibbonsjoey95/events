@@ -18,6 +18,11 @@
  body {
     margin: 0; /* Remove default body margin */
   }  
+  
+  a {
+    padding: 0;
+    margin: 0;
+  }
 
  /* Navbar styles */
 .navbar {
@@ -191,18 +196,21 @@ form {
 }
 
 /* Delete and Edit Buttons */
-.btn-danger,
-.btn-primary {
+.shared-btn {
   margin-top: 10px;
   margin-right: 10px;
-  background-color: #d9534f; /* Red for Delete */
   color: #fff;
   border: none;
   padding: 8px 15px;
+  font-size: 16px;
   text-decoration: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.btn-danger {
+  background-color: #d9534f; /* Red for Delete */
 }
 
 .btn-primary {
@@ -210,8 +218,7 @@ form {
 }
 
 /* Hover effect for buttons */
-.btn-danger:hover,
-.btn-primary:hover {
+.shared-btn:hover {
   background-color: #333;
 }
 
@@ -219,5 +226,105 @@ form {
 p.alert {
   color: #d9534f;
   font-weight: bold;
+}
+
+/* Events show page */
+.event-show-container {
+  border: solid black 2px;
+  margin: 30px auto;
+  width: 80%;
+  padding: 15px;
+  box-sizing: border-box; 
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.event-details-container {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.event-details-container p {
+  margin: 10px 0;
+  color: #333;
+}
+
+.event-details-container p:first-child {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #0066cc;
+}
+
+.event-details-container p:nth-child(2) {
+  font-size: 1.1em;
+}
+
+.event-details-container p:nth-child(3) {
+  font-size: 1.1em;
+  color: #009688;
+}
+
+.event-details-container p:last-child {
+  font-style: italic;
+  color: #777;
+}
+
+/* attendees section */
+
+.attendees-section {
+  margin-top: 20px;
+}
+
+.attendees-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.attendees-list {
+  list-style: none;
+  padding: 0;
+}
+
+.attendees-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.attendee-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #0066cc; /* Example color */
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.attendee-icon::before {
+  content: ""; /* You can add an icon or background image here */
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.attendees-list a {
+  text-decoration: none;
+  color: #0066cc; /* Link color */
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+
+.attendees-list a:hover {
+  color: #004080; /* Darker color on hover */
+}
+
+.event-actions {
+  display: flex;
 }
 
