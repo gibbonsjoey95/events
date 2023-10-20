@@ -3,12 +3,12 @@
     <h1>Hello, <%= current_user.first_name %></h1>
     <button id="toggleEvents" class="custom-button">My Events</button>
 
-    <div id="userEvents">
-    <ul>
-        <% current_user.events.each do |event| %>
-        <li class="event-item"><%= link_to event.name, event_path(event) %></li>
-        <% end %>
-    </ul>
+    <div id="userEvents" class="users-created-events">
+      <ul>
+          <% current_user.events.each do |event| %>
+          <li class="event-item"><%= link_to event.name, event_path(event) %></li>
+          <% end %>
+      </ul>
     </div>
 
   <% end %>

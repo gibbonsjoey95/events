@@ -1,5 +1,7 @@
-<h1>Edit Event</h1>
+<div class="edit-events-container">
+    <h1>Edit Event</h1>
 
-<%= render 'form', event: @event %>
+    <%= render 'form', event: @event %>
 
-<%= link_to 'Back', event_path(@event) %>
+    <%= link_to 'Back', event_path(@event), class: "btn shared-btn btn-danger"  %>
+</div>

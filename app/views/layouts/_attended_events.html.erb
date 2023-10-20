@@ -2,12 +2,12 @@
   <% if current_user%>
     <h1>Attended Events</h1>
 
-    <div id="userEvents">
-    <ul>
-      <% current_user.attended_events.each do |event| %>
-        <li class="event-item"><%= link_to event.name, event_path(event) %></li>
-      <% end %>
-    </ul>
+    <div id="userEvents" class="users-attended-events">
+      <ul>
+        <% current_user.attended_events.each do |event| %>
+          <li class="event-item"><%= link_to event.name, event_path(event) %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 </div>
