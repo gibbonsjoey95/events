@@ -1,21 +1,29 @@
-<h1>User <%= "#{@user.first_name} #{@user.last_name}" %></h1>
+<div class="user-show-container">
+  <div class="user-details-container">
+    <h1>User <%= "#{@user.first_name} #{@user.last_name}" %></h1>
+    <h3>Email: <%= @user.email %></h3>
+  </div>
 
-<h3>Email: <%= @user.email %></h3>
-
-<h2>Events</h2>
-<% if @events.any? %>
-  <ul>
-    <% @events.each do |event| %>
-      <li><%= link_to event.name, event_path(event) %></li>
+  <div class="user-events-container">
+    <h2>Events <%= @user.first_name %> created</h2>
+    <% if @events.any? %>
+      <ul>
+        <% @events.each do |event| %>
+          <li class="user-event-item"><%= link_to event.name, event_path(event) %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p> <%= @user.first_name %> has not created any events!</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No events found for this user.</p>
-<% end %>
+  </div>
 
-<h2>Events <%= @user.first_name %> is attending</h2>
-    <ul>
-      <% @user.attended_events.each do |event| %>
-        <li><%= link_to event.name, event_path(event) %></li>
-      <% end %>
-    </ul>
+  <div class="user-events-container">
+    <h2>Events <%= @user.first_name %> is attending</h2>
+        <ul>
+          <% @user.attended_events.each do |event| %>
+            <li class="user-event-item"><%= link_to event.name, event_path(event) %></li>
+          <% end %>
+        </ul>
+  </div>
+</div>
+

@@ -229,7 +229,7 @@ p.alert {
 }
 
 /* Events show page */
-.event-show-container {
+.event-show-container, .user-show-container {
   border: solid black 2px;
   margin: 30px auto;
   width: 80%;
@@ -327,4 +327,76 @@ p.alert {
 .event-actions {
   display: flex;
 }
+
+/* users show page */
+.user-details-container {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.user-details-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.user-details-container h3 {
+  font-size: 18px;
+  color: #555;
+}
+
+.user-events-container {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.user-events-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.user-events-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.user-events-container li {
+  margin-bottom: 10px;
+}
+
+.user-events-container p {
+  font-size: 16px;
+  color: #555;
+}
+
+.user-events-container li.user-event-item {
+  margin: 5px;
+}
+
+.user-events-container li.user-event-item a {
+  display: block;
+  padding: 15px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.user-events-container li.user-event-item a:hover {
+  background-color: #2980b9;
+}
+
+
+
+
+
+
 
