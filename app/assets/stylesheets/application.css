@@ -112,12 +112,14 @@
   
   .event-container {
     border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px; /* Adjust spacing between event containers */
+    margin: 10px; 
     width: 250px;
-    box-sizing: border-box; /* Include padding and border in width calculation */
-    border-radius: 10px; /* Add border-radius for curved corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    height: 250px;
+    box-sizing: border-box; 
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .event-container h2 {
